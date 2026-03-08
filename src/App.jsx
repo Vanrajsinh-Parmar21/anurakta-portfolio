@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Heart, Activity, Award, Mail, Phone, Download, MapPin } from 'lucide-react';
+import { BookOpen, Heart, Activity, Mail, Phone, Download, MapPin } from 'lucide-react';
 
 const Portfolio = () => {
-  // --- ANIMATION VARIANTS ---
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -13,6 +12,16 @@ const Portfolio = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
+
+  const supportAreas = [
+    "Stress and Anxiety Management",
+    "Personal Growth Counselling",
+    "Relationship and Interpersonal Counselling",
+    "Grief and Loss Support",
+    "Life Transition and Adjustment Support",
+    "Emotional Expression through Art",
+    "Self-discovery and Identity Exploration"
+  ];
 
   return (
     <div className="min-h-screen bg-[#F9F8F6] text-[#2C3531] font-sans selection:bg-[#8E7C93] selection:text-white">
@@ -24,11 +33,12 @@ const Portfolio = () => {
           <div className="hidden md:flex gap-8 text-sm font-medium text-[#4A5D4E]/80">
             <a href="#about" className="hover:text-[#4A5D4E] transition-colors">About</a>
             <a href="#clinical" className="hover:text-[#4A5D4E] transition-colors">Clinical Experience</a>
-            <a href="#research" className="hover:text-[#4A5D4E] transition-colors">Research & Skills</a>
+            <a href="#support" className="hover:text-[#4A5D4E] transition-colors">Areas of Support</a>
           </div>
-          <button className="flex items-center gap-2 bg-[#4A5D4E] text-[#F9F8F6] px-4 py-2 rounded-full text-sm hover:bg-[#3A4A3E] transition-colors duration-300">
+          {/* FIX: Changed to an <a> tag with download attribute */}
+          <a href="/resume.pdf" download="Anurakta_Ray_CV.pdf" className="flex items-center gap-2 bg-[#4A5D4E] text-[#F9F8F6] px-4 py-2 rounded-full text-sm hover:bg-[#3A4A3E] transition-colors duration-300">
             <Download size={16} /> CV
-          </button>
+          </a>
         </div>
       </nav>
 
@@ -62,7 +72,6 @@ const Portfolio = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-10">
-            {/* Education Cards */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#4A5D4E]/5 hover:shadow-md transition-shadow duration-500">
               <span className="text-[#8E7C93] text-sm font-bold tracking-wider">2024 - 2026</span>
               <h3 className="font-serif text-xl text-[#4A5D4E] mt-2 mb-1">M.Sc. Clinical Psychology</h3>
@@ -97,8 +106,6 @@ const Portfolio = () => {
         </motion.div>
 
         <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-[#EFEBE4]">
-          
-          {/* Experience Item 1 */}
           <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
             <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#F9F8F6] bg-[#8E7C93] text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm"></div>
             <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm border border-[#EFEBE4] transition-all duration-500 hover:-translate-y-1 hover:shadow-md">
@@ -110,7 +117,6 @@ const Portfolio = () => {
             </div>
           </div>
 
-          {/* Experience Item 2 */}
           <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
             <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#F9F8F6] bg-[#4A5D4E] text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm"></div>
             <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm border border-[#EFEBE4] transition-all duration-500 hover:-translate-y-1 hover:shadow-md">
@@ -122,7 +128,6 @@ const Portfolio = () => {
             </div>
           </div>
 
-          {/* Volunteer Item */}
           <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
             <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#F9F8F6] bg-[#D9D0C1] text-[#4A5D4E] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm">
                 <Heart size={16} />
@@ -135,14 +140,33 @@ const Portfolio = () => {
               <p className="text-[#4A5D4E]/70 text-sm mb-2">Sujata Child NGO, Belgachia & Prodigal's Home, Dimapur</p>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* --- AREAS OF SUPPORT (NEW SECTION) --- */}
+      <section id="support" className="py-20 px-6 bg-[#EFEBE4]/50">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center mb-12">
+            <Heart className="mx-auto text-[#8E7C93] mb-4" size={32} />
+            <h2 className="font-serif text-3xl text-[#4A5D4E]">Areas of Support</h2>
+            <div className="h-px w-24 bg-[#8E7C93]/30 mx-auto mt-6 mb-8"></div>
+            <p className="text-[#4A5D4E]/80 mb-10 max-w-2xl mx-auto">Providing a safe, empathetic space for individuals navigating life's emotional challenges.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {supportAreas.map((area, index) => (
+              <div key={index} className="bg-white p-5 rounded-xl border border-[#4A5D4E]/5 shadow-sm flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300">
+                <div className="w-2 h-2 rounded-full bg-[#8E7C93] shrink-0"></div>
+                <span className="text-[#4A5D4E] font-medium">{area}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* --- SKILLS & RESEARCH --- */}
       <section id="research" className="py-20 px-6 bg-[#4A5D4E] text-[#F9F8F6]">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
-          
           <div>
             <h2 className="font-serif text-3xl mb-8">Research Focus</h2>
             <div className="p-8 rounded-2xl border border-[#F9F8F6]/20 bg-white/5 backdrop-blur-sm">
@@ -177,7 +201,6 @@ const Portfolio = () => {
                 ))}
             </div>
           </div>
-
         </div>
       </section>
 
